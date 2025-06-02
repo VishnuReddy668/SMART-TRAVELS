@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        /* Body Style */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* Header Style */
+        .header {
+            background-color: #004d40;
+            color: white;
+            padding: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Container Style */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Scanner Container */
+        .scanner-container {
+            margin-bottom: 20px;
+        }
+
+        .scanner-container img {
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Button Style */
+        .btn-payment {
+            padding: 15px 30px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-payment:hover {
+            background-color: #004d40;
+            transform: scale(1.05);
+        }
+
+        /* Amount Display */
+        .amount-display {
+            font-size: 24px;
+            color: #00796b;
+            margin-top: 30px;
+        }
+
+        /* Loading Animation */
+        .loading {
+            font-size: 24px;
+            color: #ff9800;
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Payment Success */
+        .payment-success {
+            display: none;
+            font-size: 40px;
+            color: #388e3c;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .tick {
+            font-size: 120px;
+            margin-bottom: 20px;
+        }
+
+        /* Fade-In Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            Payment Page
+        </div>
+
+        <div class="scanner-container" id="scannerContainer">
+            <h2>Scan Your Payment</h2>
+            <img src="scanner.jpg" alt="Scanner Image">
+        </div>
+
+        <button class="btn-payment" onclick="askForPayment()">Proceed for Payment</button>
+
+        <div class="amount-display" id="amountDisplay" style="display: none;">
+            <p>Amount Paid: <span id="paidAmount">₹0</span></p>
+        </div>
+
+        <div class="loading" id="loading">Processing Payment...</div>
+
+        <div class="payment-success" id="paymentSuccess">
+            <div class="tick">✔</div>
+            <p>Payment Completed Successfully!</p>
+        </div>
+    </div>
+
+    <script>
+        function askForPayment() {
+            var amount = prompt("Please enter the amount to be paid:");
+
+            if (amount && !isNaN(amount) && amount > 0) {
+                var amountDisplay = document.getElementById("amountDisplay");
+                var paidAmount = document.getElementById("paidAmount");
+                paidAmount.textContent = "₹" + amount;
+                amountDisplay.style.display = 'block';
+
+                var loading = document.getElementById("loading");
+                loading.style.display = 'block';
+
+                setTimeout(function() {
+                    loading.style.display = 'none';
+
+                    // Hide the scanner image and show success message
+                    var scannerContainer = document.getElementById("scannerContainer");
+                    scannerContainer.style.display = 'none';
+
+                    var paymentSuccess = document.getElementById("paymentSuccess");
+                    paymentSuccess.style.display = 'block';
+                    setTimeout(function() {
+        var number = prompt("Enter your phone number to view your journey details:");
+
+        if (number) {
+            // Redirect to fetch.php with the phone number as a query parameter
+            window.location.href = "fetch.php?number=" + number;
+        } else {
+            alert("Please enter a valid phone number.");
+        }
+    }, 2000);
+    
+                }, 2000);
+                    
+            } else {
+                alert("Please enter a valid amount.");
+            }
+        }
+    </script>
+
+</body>
+</html>

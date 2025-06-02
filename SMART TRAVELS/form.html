@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extraordinary Form with CAPTCHA</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 400px;
+            transition: transform 0.2s;
+        }
+
+        .form-container:hover {
+            transform: scale(1.02);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        #image {
+            margin-top: 10px;
+            box-shadow: 5px 5px 5px 5px gray;
+            width: 60px;
+            height: 40px;
+            user-select: none;
+            text-decoration: line-through;
+            font-style: italic;
+            font-size: x-large;
+            border: red 2px solid;
+            display: inline-block;
+            text-align: center;
+            line-height: 40px; /* Center text vertically */
+        }
+
+        #user-input {
+            box-shadow: 5px 5px 5px 5px gray;
+            width: auto;
+            margin-right: 10px;
+            padding: 10px;
+            height: 40px;
+            border: red 0px solid;
+            display: inline-block;
+        }
+
+        .inline {
+            display: inline-block;
+        }
+
+        #btn {
+            box-shadow: 5px 5px 5px grey;
+            color: aqua;
+            margin: 10px;
+            background-color: brown;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+     <script>
+        let captcha;
+
+        function generate() {
+            // Clear old input
+            document.getElementById("submit").value = "";
+
+            // Access the element to store the generated captcha
+            captcha = document.getElementById("image");
+            let uniquechar = "";
+            const randomchar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            // Generate captcha for length of 5 with random character
+            for (let i = 1; i < 5; i++) {
+                uniquechar += randomchar.charAt(Math.random() * randomchar.length);
+            }
+
+            // Store generated input
+            captcha.innerHTML = uniquechar;
+        }
+
+        function printmsg() {
+            const usr_input = document.getElementById("submit").value;
+
+            // Check whether the input is equal to generated captcha or not
+            if (usr_input === captcha.innerHTML) {
+                document.getElementById("key").innerHTML = "Matched";
+                generate();
+            } else {
+                document.getElementById("key").innerHTML = "Not Matched";
+                generate();
+            }
+        }
+
+        // Validate form fields
+        function validateForm() {
+            let isValid = true;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const gender = document.getElementById('gender').value;
+            const age = document.getElementById('age').value;
+
+            // Clear previous errors
+            document.getElementById('name-error').innerText = '';
+            document.getElementById('email-error').innerText = '';
+            document.getElementById('gender-error').innerText = '';
+            document.getElementById('age-error').innerText = '';
+
+            // Validate name
+            if (name === '') {
+                document.getElementById('name-error').innerText = 'Name is required.';
+                isValid = false;
+            }
+
+            // Validate email
+            if (email === '') {
+                document.getElementById('email-error').innerText = 'Email is required.';
+                isValid = false;
+            }
+
+            // Validate gender
+            if (gender === '') {
+                document.getElementById('gender-error').innerText = 'Please select your gender.';
+                isValid = false;
+            }
+
+            // Validate age
+            if (age === '' || age < 1 || age > 100) {
+                document.getElementById('age-error').innerText = 'Please enter a valid age.';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            generate(); // Generate captcha on page load
+            document.getElementById('registration-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                if (validateForm()) {
+                    alert('Form submitted successfully!');
+                    this.reset(); // Reset the form
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register Here</h2>
+        <form id="Book-Ticket">
+            <form action="connected.php" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+                <div class="error" id="name-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+                <div class="error" id="email-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <div class="error" id="gender-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" min="1" max="100" required />
+                <div class="error" id="age-error"></div>
+            </div>
+            <div id="user-input" class="inline">
+                <input type="text" id="submit" placeholder="Captcha code" />
+            </div>
+
+            <div class="inline" onclick="generate()">
+                <i class="fas fa-sync" style="cursor: pointer;"></i>
+            </div>
+
+            <div id="image" class="inline" selectable="False"></div>
+            <input type="submit" id="btn" onclick="printmsg()" value="Submit" />
+            <p id="key"></p>
+        </form>
+    </div>
+</body>
+</html>

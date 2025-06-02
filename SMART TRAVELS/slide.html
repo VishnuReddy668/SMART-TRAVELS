@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider with State Selector</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%; /* Responsive design */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Body styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        #slideContainer {
+            position: relative;
+            width: 100%;
+            height: 500px; /* Set a height for the slider */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .slide {
+            display: none; /* Hide slides by default */
+            position: relative; /* Position for child elements */
+            height: 100%; /* Full height */
+            width: 100%; /* Full width */
+        }
+
+        .slide img {
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            object-fit: cover; /* Cover the slide */
+        }
+
+        .show {
+            display: block; /* Show the active slide */
+        }
+
+        .slide-text {
+            position: absolute; /* Position text over the image */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Adjust position */
+            color: white; /* Text color */
+            font-size: 24px; /* Text size */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for better visibility */
+            text-align: center; /* Center text */
+        }
+
+        /* Dropdown styling */
+        .dropdown-container {
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Adjust position */
+            z-index: 10; /* Bring dropdown above other elements */
+            background: rgba(255, 255, 255, 0.8); /* Slight background for visibility */
+            padding: 15px;
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        label {
+            font-size: 20px; /* Font size for label */
+            color: #007BFF; /* Changed font color */
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px; /* Font size for dropdown */
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            background-color: #fff;
+            color: #333; /* Text color for dropdown */
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        select:hover {
+            border-color: red;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: red;
+        }
+
+        .sliderBtn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10; /* Ensure buttons are above images */
+        }
+
+        #prev {
+            left: 10px; /* Position left */
+        }
+
+        #next {
+            right: 10px; /* Position right */
+        }
+    </style>
+</head>
+<body>
+    <div id="slideContainer">
+        <button id="prev" class="sliderBtn">&lt;</button>
+        <button id="next" class="sliderBtn">&gt;</button>
+        
+        <div class="slide show">
+            <img src="img1.jpg" alt="slide1" />
+            <p class="slide-text">Slide No. 1</p>
+        </div>
+        <div class="slide">
+            <img src="img2.jpg" alt="slide2" />
+            <p class="slide-text">Slide No. 2</p>
+        </div>
+        <div class="slide">
+            <img src="img3.jpg" alt="slide3" />
+            <p class="slide-text">Slide No. 3</p>
+        </div>
+        <div class="slide">
+            <img src="img4.jpg" alt="slide4" />
+            <p class="slide-text">Slide No. 4</p>
+        </div>
+        <div class="slide">
+            <img src="img5.jpg" alt="slide5" />
+            <p class="slide-text">Slide No. 5</p>
+        </div>
+        <div class="slide">
+            <img src="img6.jpg" alt="slide6" />
+            <p class="slide-text">Slide No. 6</p>
+        </div>
+        <div class="slide">
+            <img src="img7.jpg" alt="slide7" />
+            <p class="slide-text">Slide No. 7</p>
+        </div>
+        <div class="slide">
+            <img src="img8.jpg" alt="slide8" />
+            <p class="slide-text">Slide No. 8</p>
+        </div>
+        
+        <!-- Dropdown Container -->
+        <div class="dropdown-container">
+            <label for="dropdown">Select The State:</label>
+            <select id="dropdown" name="dropdown" onchange="checkState()">
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="West Bengal">West Bengal</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        function checkState() {
+            const dropdown = document.getElementById('dropdown');
+            const selectedValue = dropdown.value;
+
+            if (selectedValue === "Andhra Pradesh") {
+                window.location.href = "grid.html"; 
+            } else {
+                alert("We are working on it.");
+            }
+        }
+
+        // Slider JavaScript
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Auto slide every 2 seconds
+        setInterval(nextSlide, 2000); 
+
+        // Show the first slide initially
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Dashboard</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .dashboard-content {
+      padding: 20px;
+      max-width: 600px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Bus Details Section */
+    .bus-details {
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+    }
+
+    .route-info {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+
+    .route-detail {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .label {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .value input {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      width: 120px;
+    }
+
+    /* Search Buses Button */
+    .search-buses {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #searchButton {
+      background-color: #ff5722;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #searchButton:hover {
+      background-color: #e64a19;
+    }
+
+  </style>
+</head>
+<body>
+
+  <main class="dashboard-content">
+    <section class="bus-details">
+      <h2>Bus Route Details</h2>
+      <div class="route-info">
+        <div class="route-detail">
+          <span class="label">From:</span>
+          <span class="value">
+            <input type="text" id="cityFrom" value="City A">
+          </span>
+        </div>
+        <div class="route-detail">
+          <span class="label">To:</span>
+          <span class="value">
+            <input type="text" id="cityTo" value="City B">
+          </span>
+        </div>
+      </div>
+
+      <div class="search-buses">
+        <button id="searchButton">Search Buses</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('searchButton').addEventListener('click', function() {
+      // Get city values dynamically
+      const cityFrom = document.getElementById('cityFrom').value;
+      const cityTo = document.getElementById('cityTo').value;
+      
+      // Redirect to next page or use these city values in a dynamic URL
+      alert(`Searching buses from ${cityFrom} to ${cityTo}`);
+      window.location.href = "abhibus1.html"; // Replace with your dynamic URL if needed
+    });
+  </script>
+
+</body>
+</html>

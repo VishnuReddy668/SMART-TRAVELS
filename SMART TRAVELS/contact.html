@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Peace</title>
+    <style>
+        /* Reset body margin and padding */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fdf3e3; /* Light background to highlight the orange styling */
+        }
+        
+        /* Header styling */
+        header {
+            height: 80px;
+            width: 100%;
+            background-color: #ff8800; /* Rich orange color */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        /* Logo styling */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            max-height: 65px;
+        }
+        
+        .logo span {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 10px;
+            letter-spacing: 1px;
+        }
+        
+        /* Navigation styling */
+        .nav__btns a {
+            color: white;
+            font-size: 18px;
+            padding: 8px 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav__btns a:hover {
+            color: #333;
+        }
+        
+        /* Main content styling */
+        main {
+            display: flex;
+            justify-content: space-around;
+            margin: 100px 50px;
+            gap: 20px;
+        }
+        
+        /* Contact section styling */
+        .contact {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: 600px;
+            width: 500px;
+            border-radius: 10px;
+            padding: 20px;
+            color: #ff8800;
+        }
+        
+        .contact h1 {
+            text-align: center;
+            color: #ff6600; /* Vibrant orange for heading */
+            font-size: 28px;
+        }
+        
+        .contact section {
+            background-color: #ffb347;
+            border-radius: 8px;
+            color: white;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .contact section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-color: #ff6600; /* Darker orange on hover */
+        }
+        
+        /* Disclaimer styling */
+        .contactd {
+            background-color: #fff0e0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: 600px;
+            width: 1000px;
+            border-radius: 10px;
+            padding: 30px;
+            color: #ff8800;
+        }
+        
+        .contactd h1 {
+            color: #ff4500; /* Deep orange for disclaimer */
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .contactd p {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #ff6600;
+            color: white;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            font-size: 14px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact, .contactd {
+                width: 90%;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <span>VR Travels</span>
+        </div>
+        <div class="nav__btns">
+            <a href="yoshiindex.html">Home</a>
+        </div>
+    </header>
+    
+    <main>
+        <div class="contact">
+            <h1>Contact Us On :</h1>
+            <section class="call">Call Us</section>
+            <section class="email">E-mail</section>
+        </div>
+        
+        <div class="contactd">
+            <h1>DISCLAIMER!</h1>
+            <p>The information provided on this website is for general informational purposes only. While we strive to keep the details accurate and up-to-date, we make no guarantees about the completeness, reliability, or accuracy of the information provided. Any reliance you place on such information is strictly at your own risk.</p>
+            <p>Please note that while we endeavor to respond to inquiries promptly, response times may vary depending on the nature of your request and our current volume of queries. For urgent matters, we recommend using our dedicated customer support contact options.</p>
+            <p>By using the "Contact Us" form or reaching out through any provided communication channels, you agree not to submit any sensitive or confidential information. We are not responsible for any loss or damage arising from email communication or technical issues.</p>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Find Your Peace. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

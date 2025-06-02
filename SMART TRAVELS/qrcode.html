@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Payment with UPI Integration</title>
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: #f9f9f9;
+        }
+        #qr-reader {
+            width: 300px;
+            margin: 20px auto;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+        #process-payment {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scan to Pay</h1>
+    
+    <!-- QR Code Reader Container -->
+    <div id="qr-reader"></div>
+    <!-- Result Display -->
+    <p id="result"></p>
+    <!-- Process Payment Button -->
+    <button id="process-payment">Process Payment</button>
+
+    <script>
+        // Function called on successful QR code scan
+        function onScanSuccess(decodedText, decodedResult) {
+            // Display the scanned result in the result area
+            document.getElementById("result").innerText = `Scanned Number: ${decodedText}`;
+            
+            // Show the "Process Payment" button
+            const processPaymentButton = document.getElementById("process-payment");
+            processPaymentButton.style.display = "inline-block";
+            
+            // Store the scanned number in the button's data attribute for processing
+            processPaymentButton.dataset.number = decodedText;
+        }
+
+        // Function called on scan failure (optional, for logging)
+        function onScanFailure(error) {
+            console.warn(`QR code scanning failed: ${error}`);
+        }
+
+        // Initialize the HTML5 QR code scanner
+        const qrCodeScanner = new Html5Qrcode("qr-reader");
+        qrCodeScanner.start(
+            { facingMode: "environment" },  // Use the back camera
+            {
+                fps: 10,
+                qrbox: { width: 250, height: 250 }
+            },
+            onScanSuccess,
+            onScanFailure
+        );
+
+        // Handle "Process Payment" button click to open UPI app
+        document.getElementById("process-payment").addEventListener("click", function() {
+            const upiId = this.dataset.number; // Use the scanned number as UPI ID (if relevant)
+            const amount = 10; // Set the payment amount
+            const name = "Your Business Name"; // Add recipient name
+            const transactionNote = "Payment for order #1234"; // Transaction note
+            
+            // Generate UPI payment link
+            const upiLink = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR&tn=${transactionNote}`;
+            
+            // Open the UPI link, which should launch the UPI app on the device
+            window.location.href = upiLink;
+        });
+    </script>
+</body>
+</html>

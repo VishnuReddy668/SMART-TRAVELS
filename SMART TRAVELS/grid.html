@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     *{
+        box-sizing:border-box;
+        padding:0;
+        margin:0;
+     }
+     body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 56px;
+            background: linear-gradient(90deg, #ff416c, #ff4a52, #ff9b44);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+     img{
+        width:100%;
+        display:block;
+        object-fit: cover;
+        height:200px;
+        border-radius:8px;
+     }
+     section{
+        padding:30px;
+     }
+     .container{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+       
+     }
+     
+     .content{
+        margin:20px;
+        position:relative;
+        transition:transform 1s ease;
+        display:block;
+        border-radius:8px ;
+     }
+     .content:hover{
+        transform:translatev(-14px);
+     }
+     .content:hover h2{
+        color:#ff4a52;
+        transition: all 1s ease;
+     }
+     .content::before{
+        position:absolute;
+        content: "";
+        top:0;
+        bottom:0;
+        width:100%;
+        /* background:linear-gradient(rgba(0,25,255,0.5),rgba(0,255,25,0.7));  */
+        display:block;
+        border-radius:8px;
+
+     }
+     .content.info{
+        position:absolute;
+        left:0;
+        right:0;
+        bottom:20px;
+        display:flex;
+        padding:0 30px;
+        align-items:center;
+       
+     }
+     .info{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 20px;
+        display: flex;
+        justify-content: space-between; /* Space between title and button */
+        align-items: center;
+        color: white;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        padding: 10px 20px;
+        border-radius: 8px;
+     }
+     
+     .info h2{
+        color:#fff;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:20px;
+    }
+    .info button{
+        background: #1ec6b6;
+        border:none;
+        border-radius:20px;
+        font-size:14px;
+        padding:8px 15px;
+        color:#fff;
+        margin-left:20px;
+        transition:0.5s ease-out;
+    }
+    .info button:hover{
+        background:#ff4a52;
+    }
+    @media screen and (max-width:1170px)
+    {
+        section{
+            padding:30px;
+        }
+        .container{
+            grid-template-columns:repeat(2,1fr);
+
+        }
+    }
+    @media scrren and (max-width:768px){
+        section{
+            padding:15px;
+        }
+        .container{
+            grid-template-columns:1fr ;
+        }
+    }
+
+
+</style>
+<body>
+    <h1><u>Places to Visit</u></h1>
+    <section>
+    <div class="container">
+        <div class="content">
+            <img src="img1.jpg" alt="image">
+            <div class="info">
+                <h2>PUTTAPARTHY</h2>
+                <a href="puttaparthy.html"><button type="button">Explore Now</button></a>
+            </div>
+        </div>
+
+    
+        <div class="content">
+            <img src="img2.jpg" alt="image">
+            <div class="info">
+                <h2>ARAKUVALLEY</h2>
+                <a href="arakuvalley.html"><button type="button">Explore Now</button></a>
+            </div>
+        </div>
+    
+        <div class="content">
+            <img src="img3.jpg" alt="image">
+            <div class="info">
+                <h2>GANDIKOTA</h2>
+                <a href="gandikota.html"><button type="button">Explore Now</button></a>
+            </div>
+        </div>
+    
+        <div class="content">
+            <img src="img4.jpg" alt="image">
+            <div class="info">
+                <h2>HORSELYHILLS</h2>
+                <a href="horselyhills.html"><button type="button">Explore Now</button></a>
+            </div>
+        </div>
+    
+                <div class="content">
+                    <img src="img5.jpg" alt="image">
+                    <div class="info">
+                        <h2>BURRACAVES</h2>
+                        <a href="burracaves.html"><button type="button">Explore Now</button></a>
+                    </div>
+                </div>
+            
+                <div class="content">
+                    <img src="img6.jpg" alt="image">
+                    <div class="info">
+                        <h2>RIVERGODAVRI</h2>
+                        <a href="godavari.html"><button type="button">Explore Now</button></a>
+                    </div>
+                </div>
+           
+                <div class="content">
+                    <img src="img7.jpg" alt="image">
+                    <div class="info">
+                        <h2>TIRUPATHI</h2>
+                        <a href="tirupathi.html"><button type="button">Explore Now</button></a>
+                    </div>
+                </div>
+            
+                <div class="content">
+                    <img src="img8.jpg" alt="image">
+                    <div class="info">
+                        <h2>KAIGALFALLS</h2>
+                        <a href="kaigalfalls.html"><button type="button">Explore Now</button></a>
+                    </div>
+                </div>
+            
+                <div class="content">
+                    <img src="img9.jpg" alt="image">
+                    <div class="info">
+                        <h2>AMARAVATHI</h2>
+                        <a href="amaravathi.html"><button type="button">Explore Now</button></a>
+                    </div>
+                </div>
+    </div>
+    </section>
+    
+</body>
+</html>

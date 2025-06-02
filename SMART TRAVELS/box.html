@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 5px;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .grid-item {
+            position: relative;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            border: 2px solid #333;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        /* Hover effect */
+        .grid-item:hover {
+            background-color: lightcoral;
+            transform: scale(1.05);
+        }
+
+        
+        img{
+            width:80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-item">
+          <img src="img5.jpg">
+                
+        </div>
+        <div class="grid-item">
+            <img src="img1.jpg">
+        </div>
+       
+        <div class="grid-item" >
+           <img src="img3.jpg">
+        </div>
+        <div class="grid-item" >
+           <img src="img4.jpg">
+        </div>
+        <div class="grid-item" >
+            <img src="img2.jpg">
+        </div>
+        <div class="grid-item" >
+           <img src="img6.jpg">
+        </div>
+        <div class="grid-item" >
+            <img src="img7.jpg">
+        </div>
+        <div class="grid-item">
+            <img src="img8.jpg">
+        </div>
+        <div class="grid-item">
+           <img src="img9.jpg">
+        </div>
+    </div>
+
+    
+</body>
+</html>

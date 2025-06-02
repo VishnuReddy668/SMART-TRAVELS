@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Bus Style Navbar</title>
+    <!-- Link to Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHq+6aG+k6yPZ6k36F5V4B2IB9q0z6MaY5fzqBb1h5JmB7f3P6k7JIl1UQ4V06dj8bMgZbZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f6fa;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #de105c;
+            padding: 40px 30px;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Navbar Links */
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .navbar-links a:hover {
+            color: #ffcc00;
+        }
+
+        /* Icon Styling */
+        .navbar-links i {
+            font-size: 18px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none; /* Hide links on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <!-- Logo -->
+        <a href="#" class="navbar-logo">VRBus</a>
+        
+        <!-- Navbar Links -->
+        <div class="navbar-links">
+            <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+            <a href="contact.html"><i class="fas fa-phone-alt"></i> Contact</a>
+            <a href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
+            <a href="loginhp.html" class="login"><i class="fas fa-user"></i> Login/Sign Up</a>
+        </div>
+    </nav>
+    
+
+</body>
+</html>

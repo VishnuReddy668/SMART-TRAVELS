@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+#slideContainer {
+    position: relative;
+    width: 600px; /* Set desired width */
+    height: 400px; /* Set desired height */
+    overflow: hidden;
+}
+
+.slide {
+    display: none; /* Hide all slides by default */
+    text-align: center; /* Center text */
+}
+
+.slide img {
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Ensure the image has the same height */
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+}
+
+.show {
+    display: block; /* Show the active slide */
+}
+
+.sliderBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1000;
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}
